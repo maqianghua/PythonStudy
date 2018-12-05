@@ -1,0 +1,22 @@
+virtualenv：
+1 在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.4。所有第三方的包都会被pip安装到Python3的site-packages目录下
+2 在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.4。所有第三方的包都会被pip安装到Python3的site-packages目录下
+3 这种情况下，每个应用可能需要各自拥有一套“独立”的Python运行环境。virtualenv就是用来为一个应用创建一套“隔离”的Python运行环境
+4 命令virtualenv就可以创建一个独立的Python运行环境，我们还加上了参数--no-site-packages，这样，已经安装到系统Python环境中的所有第三方包都不会复制过来，这样，我们就得到了一个不带任何第三方包的“干净”的Python运行环境。
+5 注意到命令提示符变了，有个(venv)前缀，表示当前环境是一个名为venv的Python环境
+6 完全可以针对每个应用创建独立的Python运行环境，这样就可以对每个应用的Python环境进行隔离
+7 virtualenv是如何创建“独立”的Python运行环境的呢？原理很简单，就是把系统Python复制一份到virtualenv的环境，用命令source venv/bin/activate进入一个virtualenv环境时，virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境。
+8 virtualenv为应用提供了隔离的Python运行环境，解决了不同应用间多版本的冲突问题
+
+图形界面：
+1 Python支持多种图形界面的第三方库，包括：Tk,wxwidgets,Qt,GTK
+2 但是Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。本章简单介绍如何使用Tkinter进行GUI编程。
+3 Tk是一个图形库，支持多个操作系统，使用Tcl语言开发
+4 Tk会调用操作系统提供的本地GUI接口，完成最终的GU
+5 所以，我们的代码只需要调用Tkinter提供的接口就可以了
+6 第一步是导入Tkinter包的所有内容
+7 第二步是从Frame派生一个Application类，这是所有Widget的父容器
+8 在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。
+9 pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局
+10 在createWidgets()方法中，我们创建一个Label和一个Button，当Button被点击时，触发self.quit()使程序退出。
+11 Python内置的Tkinter可以满足基本的GUI程序的要求，如果是非常复杂的GUI程序，建议用操作系统原生支持的语言和库来编写

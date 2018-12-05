@@ -1,0 +1,16 @@
+FAQ：常见问题：
+1 如何获取当前路径：当前路径可以用'.'表示，在用os.path.abspth()将其转换成据对路径：import os;print(os.path.sbspath('.')
+2 如何获取当前模块的文件名：可以通过特殊变量__file__获取：print(__file__)
+3 如何获取命令行参数：可以通过sys模块的argv获取：import sys ;print(sys.argv);argv的第一个元素永远是命令执行的.py文件名
+4 如何获取当前python命令的可执行文件路径：sys模块的excutable变量就是python命令可执行文件的路径
+5 Python __init__.py 作用详解：通常__init__.py 文件为空，但是我们还可以为它增加其他的功能。我们在导入一个包时，实际上是导入了它的__init__.py文件。这样我们可以在__init__.py文件中批量导入我们所需要的模块，而不再需要一个一个的导入。
+6         if not configInfo.has_key('self_defined'):
+            configInfo.self_defined = bundle()
+7 locals() 函数会以字典类型返回当前位置的全部局部变量
+8 hasattr() 函数用于判断对象是否包含对应的属性
+9 getattr() 函数用于返回一个对象属性值。
+10 json 模块提供了一种很简单的方式来编码和解码JSON数据。 其中两个主要的函数是 json.dumps() 和 json.loads() ， 要比其他序列化函数库如pickle的接口少得多
+11 如果你要处理的是文件而不是字符串，你可以使用 json.dump() 和 json.load() 来编码和解码JSON数据
+12 如果你想获得漂亮的格式化字符串后输出，可以使用 json.dumps() 的indent参数
+13 os.path.splitext(path):分离文件名与扩展名.
+

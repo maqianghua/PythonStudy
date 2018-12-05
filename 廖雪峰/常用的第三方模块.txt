@@ -1,0 +1,41 @@
+常用的第三方模块：
+1 基本上，所有的第三方模块都会在PyPI - the Python Package Index上注册，只要找到对应的模块名字，即可用pip安装。此外，在安装第三方模块一节中，我们强烈推荐安装Anaconda，安装后，数十个常用的第三方模块就已经就绪，不用pip手动安装
+
+常用的第三方模块：Pillow
+1 PIL：Python Imaging Library，已经是Python平台事实上的图像处理标准库了。PIL功能非常强大，但API却非常简单易用
+2 由于PIL仅支持到Python 2.7，加上年久失修，于是一群志愿者在PIL的基础上创建了兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性，因此，我们可以直接安装使用Pillow。
+3 如果安装了Anaconda，Pillow就已经可用了
+4 其他功能如切片、旋转、滤镜、输出文字、调色板等一应俱全
+5 PIL的ImageDraw提供了一系列绘图方法，让我们可以直接绘图。比如要生成字母验证码图片
+6 这是因为PIL无法定位到字体文件的位置，可以根据操作系统提供绝对路径，比如
+7 要详细了解PIL的强大功能，请请参考Pillow官方文档：https://pillow.readthedocs.org/
+
+常用的第三方模块：requests
+1 我们已经讲解了Python内置的urllib模块，用于访问网络资源。但是，它用起来比较麻烦，而且，缺少很多实用的高级功能
+2 更好的方案是使用requests。它是一个Python第三方库，处理URL资源特别方便
+3 如果安装了Anaconda，requests就已经可用了
+4 requests的方便之处还在于，对于特定类型的响应，例如JSON，可以直接获取：
+5 需要传入HTTP Header时，我们传入一个dict作为headers参数
+6 要发送POST请求，只需要把get()方法变成post()，然后传入data参数作为POST请求的数据
+7 在读取文件时，注意务必使用'rb'即二进制模式读取，这样获取的bytes长度才是文件的长度
+
+常用的第三方模块：chardet
+1 字符串编码一直是令人非常头疼的问题，尤其是我们在处理一些不规范的第三方网页的时候。虽然Python提供了Unicode表示的str和bytes两种数据类型，并且可以通过encode()和decode()方法转换，但是，在不知道编码的情况下，对bytes做decode()不好做。
+2 如果安装了Anaconda，chardet就已经可用了
+3 对于未知编码的bytes，要把它转换成str，需要先“猜测”编码。猜测的方式是先收集各种编码的特征字符，根据特征字符判断，就能有很大概率“猜对”
+4 当我们拿到一个bytes时，就可以对其检测编码。用chardet检测编码，只需要一行代码
+5 检测的编码是GB2312，注意到GBK是GB2312的超集，两者是同一种编码，检测正确的概率是74%，language字段指出的语言是'Chinese'
+6 可见，用chardet检测编码，使用简单。获取到编码后，再转换为str，就可以方便后续处理
+7 chardet支持检测的编码列表请参考官方文档：https://chardet.readthedocs.io/en/latest/supported-encodings.html
+
+常用的第三方模块：psutil
+1 用Python来编写脚本简化日常的运维工作是Python的一个重要用途。在Linux下，有许多系统命令可以让我们时刻监控系统运行的状态，如ps，top，free等等。要获取这些系统信息，Python可以通过subprocess模块调用并获取结果。但这样做显得很麻烦，尤其是要写很多解析代码
+2 在Python中获取系统信息的另一个好办法是使用psutil这个第三方模块。顾名思义，psutil = process and system
+utilities，它不仅可以通过一两行代码实现系统监控，还可以跨平台使用，支持Linux／UNIX／OSX／Windows等，是系统管理员和运维小伙伴不可或缺的必备模块
+3 获取CPU的信息：import psutil; psutil.cpu_count()#CPU逻辑数量；psutil.cpu_count(logical=False)#CPU物理核心
+4 使用psutil获取物理内存和交换内存信息，分别使用：psutil.virtual_memory()和psutil。qswap_memory()返回的是字节为单位的整数
+5 psutil还提供了一个test()函数，可以模拟出ps命令的效果：
+6 和获取网络连接类似，获取一个root用户的进程需要root权限，启动Python交互环境或者.py文件时，需要sudo权限。
+7 psutil使得Python程序获取系统信息变得易如反掌。
+8 psutil还可以获取用户信息、Windows服务等很多有用的系统信息，具体请参考psutil的官网：https://github.com/giampaolo/psutil
+
